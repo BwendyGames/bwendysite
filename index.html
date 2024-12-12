@@ -47,6 +47,8 @@
             padding: 1.5rem;
             border-radius: 10px;
             border: 2px solid #8b00ff;
+            text-align: center;
+            align-items: center;
         }
 
         h2 {
@@ -63,6 +65,8 @@
             border-radius: 12px;
             background: #1c1c1c;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6);
+            text-align: center;
+            align-items: center;
         }
 
         .slideshow {
@@ -70,12 +74,16 @@
             max-width: 100%;
             border-radius: 5px;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .slides {
             display: none;
             max-width: 100%;
-            height: auto;
+            max-height: 100%;
+            object-fit: cover; /* Ensures the content scales properly */
         }
 
         .active {
@@ -242,7 +250,7 @@
                 </div>
                 <div class="project-media">
                     <div class="slideshow">
-                        <img class="slides active" src="samuraicrow.png" alt="Project Three Cover">
+                        <img class="slides active" src="samuraicrow.png" alt="Project Four Cover">
                         <img class="slides" src="starman.png" alt="Project Three Scr">
                         <div class="slideshow-controls">
                             <button class="control" onclick="changeSlide(this, -1)">&#10094;</button>
