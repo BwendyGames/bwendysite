@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>BwendyDev</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'PT Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #d4c7be;
+            line-height: 1.8;
+        }
+
+        header {
+            background: url("banner.png") no-repeat center center/cover;
+            color: #d4c7be;
+            padding: 3rem 0;
+            text-align: center;
+            border-bottom: 5px solid #8b00ff;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3.5rem;
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+            padding: 2rem 0;
+        }
+
+        .about-me, .projects {
+            margin-bottom: 2rem;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 2px solid #8b00ff;
+        }
+
+        h2 {
+            color: #8b00ff;
+            font-size: 2.5rem;
+            text-decoration: underline;
+            margin-bottom: 1rem;
+        }
+
+        .project {
+            border: 2px solid #8b00ff;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+            background: #1c1c1c;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        .slideshow {
+            position: relative;
+            max-width: 100%;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .slides {
+            display: none;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .slideshow-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .control {
+            background: #8b00ff;
+            color: #d4c7be;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border-radius: 3px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+        }
+
+        p {
+            font-size: 1.2rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #1c1c1c;
+            border-top: 2px solid #8b00ff;
+            color: #d4c7be;
+        }
+
+        footer p {
+            margin: 0;
+        }
+        .fa {
+            padding: 20px;
+            font-size: 30px;
+            width: 50px;
+            text-align: center;
+            text-decoration: none;
+            background: #8b00ff;
+            color: white;
+            
+            }
+
+            /* Add a hover effect if you want */
+            .fa:hover {
+            opacity: 0.7;
+            background: #8b00ff;
+            color: white;
+            }
+
+            a {
+            background: #8b00ff;
+            text-align: center;
+            padding: 20px;
+            font-size: 30px;
+            color: white;
+            text-decoration: none; /* Optional: removes underline */
+             }
+
+            a:hover {
+                opacity: 0.7;
+                background: #8b00ff;
+                color: white;
+            }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>BwendyDev</h1>
+    </header>
+
+    <div class="container">
+        <section class="about-me">
+            <h2>About Me</h2>
+            <p>My name is Brendon, but I go by Bwendy online. I've been making video games for my entire adolescent life up to now. In 2023, I launched Faraway Studios, what was then a parternship with my lifelong friend Fivel. There are now three/four of us (depending on the day lol). I also do some web-development, and I solo-developed the steam game RTS Football. I also like Adventure Time, a lot.</p>
+            <center>
+            <h1><a href="https://x.com/BwendyDev" class="fa fa-twitter"></a>
+            <a href="https://github.com/BwendyGames" class="fa fa-github"></a>
+            <a href="https://www.youtube.com/channel/UCT5HEHIKsHlZbunSXrq54Cg" class="fa fa-youtube"></a>
+            </h1></center>
+        </section>
+
+        <section class="projects">
+            <h2>Projects</h2>
+
+            <div class="project">
+                <div class="project-content">
+                    <h3>Gladiator's of Roma Revixit</h3>
+                    <p>The upcoming first title under the Faraway Studios umbrella is the story-driven, fast paced action-roguelike Gladiator's of Roma Revixit. I serve a number of roles at any given point, I am a project director, the head developer / game designer / story-writer / occasional pixel artist. A jack of all trades if you will.</p>
+                </div>
+                <div class="project-media">
+                    <div class="slideshow">
+                        <img class="slides active" src="glad-capsule.png" alt="glad-cover">
+                        <div class="slides" controls>
+                            <iframe width="680" height="315" src="https://www.youtube.com/embed/dpygJCGf740?si=5KZwclEavg2KlAwK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <img class="slides" src="glad_scr_1.png" alt="Project One Scr">
+                        <img class="slides" src="glad_scr_2.png" alt="Project One Scr">
+                        <img class="slides" src="glad_scr_3.png" alt="Project One Scr">
+                        <div class="slideshow-controls">
+                            <button class="control" onclick="changeSlide(this, -1)">&#10094;</button>
+                            <button class="control" onclick="changeSlide(this, 1)">&#10095;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-content">
+                    <h3>RTS Football</h3>
+                    <p>A solo-project of my mine, RTS Football is a unique take on the real-time-strategy genre, where you control giant mechs that just so happen to be playing football.</p>
+                </div>
+                <div class="project-media">
+                    <div class="slideshow">
+                        <img class="slides active" src="rts-capsule-export.png" alt="Project Two Cover">
+                        <div class="slides" controls>
+                            <iframe width="680" height="315" src="https://www.youtube.com/embed/1Nyz08eXT34?si=sWUi_p4UoqKCpzSE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <img class="slides" src="rts_scr_1.jpg" alt="Project Two Scr">
+                        <img class="slides" src="rts_scr_2.jpg" alt="Project Two Scr">
+                        <div class="slideshow-controls">
+                            <button class="control" onclick="changeSlide(this, -1)">&#10094;</button>
+                            <button class="control" onclick="changeSlide(this, 1)">&#10095;</button>
+                        </div>
+                    </div>
+                    <br><center><a href="https://store.steampowered.com/app/2493470/RTS_Football/">Take Me There</a></center><br>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-content">
+                    <h3>The Boy in the Hour Glass</h3>
+                    <p>It was a lot of fun working as the developer on the Faraway Studios entry into the 2024 discord game jam, along with my friend Fivel working on the art, and my friend Sophie on the keys.</p>
+                </div>
+                <div class="project-media">
+                    <div class="slideshow">
+                        <img class="slides active" src="theboycover.png" alt="Project Three Cover">
+                        <img class="slides" src="boy_scr_1.png" alt="Project Three Scr">
+                        <img class="slides" src="boy_scr_2.png" alt="Project Three Scr">
+                        <div class="slideshow-controls">
+                            <button class="control" onclick="changeSlide(this, -1)">&#10094;</button>
+                            <button class="control" onclick="changeSlide(this, 1)">&#10095;</button>
+                        </div>
+                    </div>
+                    <br><center><a href="https://farawaystudios.itch.io/the-boy-in-the-hour-glasss">Take Me There</a></center><br>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 BwendyDev - dedicated to dogs that died</p>
+    </footer>
+
+    <script>
+        const changeSlide = (button, n) => {
+            const slideshow = button.closest('.slideshow');
+            const slides = slideshow.querySelectorAll('.slides');
+            let currentIndex = Array.from(slides).findIndex(slide => slide.classList.contains('active'));
+            slides[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + n + slides.length) % slides.length;
+            slides[currentIndex].classList.add('active');
+        };
+    </script>
+</body>
+</html>
