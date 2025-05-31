@@ -4,234 +4,372 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BwendyDev</title>
-    <link rel="icon" type="image/svg+xml" href="icon.jpg">
+    <link rel="icon" type="image/png" href="icon.jpg">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
 
         :root {
-            --surface: #232634;
-            --overlay: #181825;
-            --accent: #a6e3a1;
-            --highlight: #b4befe;
+            --bg: #1e1e2e;
+            --sidebar: #181825;
+            --panel: #252537;
             --text: #cdd6f4;
-            --subtle: #6c7086;
-            --border: #45475a;
+            --link: #89dceb;
+            --highlight: #b4befe;
+            --border: #313244;
             --card: #313244;
         }
 
+        * { box-sizing: border-box; }
+
         body {
-            background: var(--overlay);
-            color: var(--text);
+            margin: 0;
             font-family: 'PT Sans', sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.7;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
         }
 
-        header {
-            background: var(--surface);
+        nav {
+            background: var(--sidebar);
+            padding: 1.5rem;
+            width: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-right: 2px solid var(--border);
+        }
+
+        .nav-top {
+            flex-grow: 1;
+        }
+
+        nav h1 {
+            font-size: 1.5rem;
             color: var(--highlight);
-            text-align: center;
-            padding: 2.8rem 0 1.2rem 0;
-            border-bottom: 3px solid var(--highlight);
-            box-shadow: 0 6px 32px #0008;
+            margin: 0 0 1rem 0;
         }
 
-        header h1 {
-            font-size: 2.7rem;
-            margin: 0 0 0.5rem 0;
-            letter-spacing: 2px;
-        }
-        header p {
-            margin: 0;
-            font-size: 1.3rem;
-            color: var(--subtle);
+        nav ul {
+            list-style: none;
+            padding: 0;
         }
 
-        .container {
-            width: 97%;
-            max-width: 850px;
-            margin: 2.5rem auto 2rem auto;
+        nav li {
+            margin-bottom: 0.8rem;
         }
 
-        .project {
-            background: var(--card);
-            border: 1.5px solid var(--border);
-            border-radius: 13px;
-            box-shadow: 0 4px 20px #0006;
-            margin-bottom: 2.1rem;
-            padding: 1.5rem 1.1rem 1.3rem 1.1rem;
-            display: flex;
-            gap: 1.5rem;
-            align-items: flex-start;
+        nav a {
+            color: var(--link);
+            text-decoration: none;
+            font-size: 1.1rem;
+            cursor: pointer;
         }
-        .project-logo {
-            width: 86px;
-            min-width: 64px;
-            height: 86px;
-            border-radius: 12px;
-            background: var(--surface);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1rem;
+
+        nav a:hover {
+            text-decoration: underline;
         }
-        .project-logo img {
-            width: 64px;
-            height: 64px;
-            object-fit: contain;
+
+        .contact {
+            font-size: 0.9rem;
+            color: var(--text);
+            margin-top: 2rem;
+        }
+
+        main {
+            flex: 1;
+            padding: 2rem;
+            overflow-y: auto;
+            background: var(--panel);
+        }
+
+        section {
+            display: none;
+        }
+
+        section.active {
             display: block;
         }
-        .project-content {
-            flex: 1;
-        }
-        .project h3 {
+
+        h2 {
+            font-size: 1.7rem;
             color: var(--highlight);
-            margin: 0 0 0.3rem 0;
-            font-size: 1.35rem;
-        }
-        .project p {
-            color: var(--text);
-            margin: 0 0 0.8rem 0;
-            font-size: 1.07rem;
-        }
-        .project a {
-            background: var(--highlight);
-            color: var(--surface);
-            border-radius: 7px;
-            text-decoration: none;
-            padding: 0.38em 1.2em;
-            font-weight: bold;
-            font-size: 1.09rem;
-            margin-right: 0.5em;
-            transition: background 0.13s, color 0.13s;
-            border: none;
-            outline: none;
-        }
-        .project a:hover {
-            background: var(--accent);
-            color: var(--overlay);
-        }
-        .project-media {
-            margin-top: 0.8em;
-        }
-        .project-media img {
-            border-radius: 8px;
-            box-shadow: 0 1px 9px #0005;
-            width: 240px;
-            max-width: 100%;
-        }
-        .project-media iframe {
-            border-radius: 8px;
-            width: 340px;
-            height: 191px;
-            max-width: 100%;
-            border: none;
+            margin-bottom: 1rem;
         }
 
-        footer {
-            text-align: center;
-            padding: 1.2rem 0;
-            background: var(--surface);
-            color: var(--subtle);
-            border-top: 2px solid var(--highlight);
-            font-size: 1rem;
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px #0005;
+            cursor: pointer;
         }
-        @media (max-width: 700px) {
-            .container { max-width: 98vw; }
-            .project { flex-direction: column; align-items: stretch; }
-            .project-media img, .project-media iframe { width: 100%; height: auto; }
-            .project-logo { margin: 0 auto 0.6rem auto; }
+
+        .card img {
+            width: 100%;
+            max-width: 420px;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 0.8rem;
+            display: block;
+        }
+
+        .card h3 {
+            margin: 0;
+            font-size: 1.3rem;
+            color: var(--link);
+        }
+
+        .card p {
+            margin: 0.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .card a {
+            display: inline-block;
+            margin-top: 0.4rem;
+            color: var(--highlight);
+            text-decoration: none;
+        }
+
+        .card a:hover {
+            text-decoration: underline;
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+
+        .modal-content {
+            background: var(--panel);
+            padding: 2rem;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            border-radius: 12px;
+            border: 2px solid var(--highlight);
+            color: var(--text);
+        }
+
+        .modal-content h3 {
+            margin-top: 0;
+            color: var(--highlight);
+        }
+
+        .modal-close {
+            margin-top: 1.5rem;
+            display: inline-block;
+            color: var(--link);
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>BwendyDev</h1>
-        <p>Game Development &middot; Tools &middot; Open Source Software</p>
-        <a href="https://github.com/BwendyGames" target="_blank">Github</a> &middot; <a href="https://x.com/BwendyDev" target="_blank">X</a>
-    </header>
-    <div class="container">
-
-        <!-- Gladiator's of Roma Revixit -->
-        <div class="project">
-            <div class="project-logo">
-                <img src="glad-capsule.png" alt="Gladiators of Roma Revixit Logo">
-            </div>
-            <div class="project-content">
+    <nav>
+        <div class="nav-top">
+            <h1>BwendyDev</h1>
+            <ul>
+                <li><a onclick="showPanel('games')">Games</a></li>
+                <li><a onclick="showPanel('tools')">Tools & Software</a></li>
+                <li><a onclick="showPanel('poetry')">Poetry</a></li>
+            </ul>
+        </div>
+        <div class="contact">
+            &copy; 2024 BwendyDev<br>
+            <a href="mailto:bwendydev@proton.me" style="color:#b4befe;text-decoration:none;">Contact</a>
+        </div>
+    </nav>
+    <main>
+        <section id="games" class="active">
+            <h2>Games</h2>
+            <div class="card">
                 <h3>Gladiator's of Roma Revixit</h3>
-                <p>
-                    The flagship action-roguelike from Faraway Studios. Direct fast-paced combat, deep story, and a post-nuclear vision of Rome's rebirth. I serve as project director, lead developer, designer, and more.
-                </p>
+                <p>A post-nuclear roguelike with deep combat and narrative design. Project director and lead dev.</p>
                 <a href="https://wishlist.faraway.games" target="_blank">Wishlist on Steam</a>
-                <div class="project-media">
-                    <img src="glad_scr_1.png" alt="Gladiators Screenshot 1">
-                </div>
+                <img src="glad_scr_1.png" alt="Gladiators Screenshot 1">
             </div>
-        </div>
-
-        <!-- The Boy in the Hour Glass -->
-        <div class="project">
-            <div class="project-logo">
-                <img src="theboycover.png" alt="The Boy in the Hour Glass Logo">
-            </div>
-            <div class="project-content">
+            <div class="card">
                 <h3>The Boy in the Hour Glass</h3>
-                <p>
-                    Our Discord Game Jam entry for 2024, built with friends in 48 hours. I led development/programming.
-                </p>
+                <p>Made in 48 hours for a game jam. I led development.</p>
                 <a href="https://farawaystudios.itch.io/the-boy-in-the-hour-glasss" target="_blank">Play on Itch.io</a>
-                <div class="project-media">
-                    <img src="boy_scr_1.png" alt="The Boy Screenshot 1">
-                </div>
+                <img src="boy_scr_1.png" alt="The Boy Screenshot 1">
             </div>
-        </div>
-
-        <!-- RTS Football -->
-        <div class="project">
-            <div class="project-logo">
-                <img src="rts-capsule-export.png" alt="RTS Football Logo">
-            </div>
-            <div class="project-content">
+            <div class="card">
                 <h3>RTS Football</h3>
-                <p>
-                    A unique, real-time strategy game where you command giant mechs...playing football. Solo developed and released on Steam.
-                </p>
+                <p>Mechs playing football. Released solo on Steam.</p>
                 <a href="https://store.steampowered.com/app/2493470/RTS_Football/" target="_blank">Steam Page</a>
-                <div class="project-media">
-                    <img src="rts_scr_1.jpg" alt="RTS Football Screenshot 1">
-                </div>
+                <img src="rts_scr_1.jpg" alt="RTS Football Screenshot 1">
             </div>
-        </div>
+        </section>
 
-        <!-- PyCube -->
-        <div class="project">
-            <div class="project-logo">
-                <img src="logo.svg" alt="PyCube Logo">
-            </div>
-            <div class="project-content">
+        <section id="tools">
+            <h2>Tools & Software</h2>
+            <div class="card">
                 <h3>PyCube</h3>
-                <p>
-                    A modern, Python-inspired story format for Twine. Designed for clarity, simplicity, and interactive fiction. Supports variable logic, saving, error handling, and more.
-                </p>
+                <p>Python-inspired Twine format supporting logic, save/load, and more.</p>
                 <a href="https://pycube.org" target="_blank">pycube.org</a>
-                <div class="project-media">
-                    <img src="logo.png" alt="PyCube Logo Wide">
-                </div>
+                <img src="logo.png" alt="PyCube Logo">
             </div>
+        </section>
+
+        <section id="poetry">
+            <h2>Poetry</h2>
+            <div class="card" onclick="loadPoem('Parked Impala')">
+                <h3>Parked Impala</h3>
+            </div>
+            <div class="card" onclick="loadPoem('Saving Theodore')">
+                <h3>Saving Theodore</h3>
+            </div>
+        </section>
+    </main>
+
+    <div id="poemModal" class="modal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h3 id="modalTitle"></h3>
+            <pre id="modalBody" style="white-space: pre-wrap;"></pre>
+            <span class="modal-close" onclick="closeModal(event)">Close</span>
         </div>
-        <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-        <script>
-        kofiWidgetOverlay.draw('bwendydev', {
-            'type': 'floating-chat',
-            'floating-chat.donateButton.text': 'Support me',
-            'floating-chat.donateButton.background-color': '#00b9fe',
-            'floating-chat.donateButton.text-color': '#fff'
-        });
-        </script>
     </div>
-    <footer>
-        &copy; 2024 BwendyDev – indie dev, always learning. | <a href="mailto:bwendydev@proton.me" style="color:#b4befe;text-decoration:none;">Contact</a>
-    </footer>
+
+    <script>
+        // Poem texts as variables
+        const poems = {
+            "Parked Impala": `
+
+Mommy drives to school
+Down suburb society 
+Very little variety
+Too tired to keep her eyes on the road 
+She lets her eyes close and 
+She falls asleep on the phone
+With her boy in the back 
+Seatbelts on, I'll give her that
+Begins to wave, it's 8 am
+Skip school kid, it's on me
+Straight into my 
+Parked Impala
+
+Tow trucks tow two cars
+one worse for wear,
+One barely noticed, 
+She barely cares
+Insurance sharing,
+Split parent tearing,
+Statefarm shill 
+Tell the post office 
+The mailbox’s split
+In two
+Act like 
+They never knew you 
+Doesn’t take long 
+For them to blame you 
+I suppose, I’m doing the same 
+To you too
+
+Boy in the ambulance 
+just getting checked out 
+airbags out 
+Impala’s totaled 
+I walk to work now
+`,
+
+            "Saving Theodore": `
+
+Short men in a tall world
+bring the world
+down to their level
+And they blame it on the bevel
+And so they slipped
+On their way
+To better days
+
+Write your name down
+Theodore Brooks
+Father of four
+You made your daughter
+A wooden horse
+You built a house
+For your wife
+Who complained
+On lonely nights
+You got a dog
+Who fit just right
+You got a job
+It was alright
+But it barely lasted
+And before you knew
+You had a family who loved you
+And your fear of losing that
+Was the elephant
+in the room
+
+You started with a vase
+It held your mother's ashes
+It was worth something dashing
+So you sold it to a traveling man
+Who belonged to some traveling band
+You suppose he turned a profit
+Because he was back before you knew
+Asking for another heirloom
+But only one other held your mother
+And so you became aware that
+Your wedding ring was strangling your fingers
+Fat fingered tinkerer man
+
+The man had made a habit
+Of buying your old gadgets
+And as it whittled thin
+You started dipping into
+The things you did
+for your kids
+You sold the wooden horse
+You sold the lonely nights
+And the house you called home
+It was no longer yours to own
+
+Where’d it all go, old man?
+You spent it trying to make more,
+How original, family man
+And so you sit out on a porch
+Peach tea and two cobbler portions
+You broke even with your deals
+When you traded your soul
+You know why what happened did
+Your wife left you, took the kids too
+She’s married to a taller man
+Than you
+`
+        };
+
+        function showPanel(id) {
+            document.querySelectorAll('main section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(id).classList.add('active');
+        }
+
+        function loadPoem(title) {
+            const text = poems[title];
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalBody').textContent = text ? text.trim() : 'Poem not found.';
+            document.getElementById('poemModal').style.display = 'flex';
+        }
+
+        function closeModal(event) {
+            document.getElementById('poemModal').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
