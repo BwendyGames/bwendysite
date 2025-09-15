@@ -6,210 +6,155 @@
     <title>BwendyDev</title>
     <link rel="icon" type="image/png" href="icon.jpg">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
-
-        :root {
-            --bg: #1e1e2e;
-            --sidebar: #181825;
-            --panel: #252537;
-            --text: #cdd6f4;
-            --link: #89dceb;
-            --highlight: #b4befe;
-            --border: #313244;
-            --card: #313244;
+        body {
+            margin: 0 auto;
+            max-width: 800px;
+            font-family: "Courier New", Courier, monospace;
+            background-color: #0a0a0f;
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 20px;
         }
 
-        * { box-sizing: border-box; }
-
-        body {
-            margin: 0;
-            font-family: 'PT Sans', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
+        header {
+            border: 2px solid #6b4ba3;
+            padding: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            background: #1a1a24;
         }
 
         nav {
-            background: var(--sidebar);
-            padding: 1.5rem;
-            width: 220px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            border-right: 2px solid var(--border);
-        }
-
-        .nav-top {
-            flex-grow: 1;
-        }
-
-        nav h1 {
-            font-size: 1.5rem;
-            color: var(--highlight);
-            margin: 0 0 1rem 0;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        nav li {
-            margin-bottom: 0.8rem;
+            border: 1px solid #6b4ba3;
+            padding: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            background: #1a1a24;
         }
 
         nav a {
-            color: var(--link);
+            color: #b388ff;
             text-decoration: none;
-            font-size: 1.1rem;
-            cursor: pointer;
+            padding: 5px 15px;
+            margin: 0 5px;
         }
 
         nav a:hover {
-            text-decoration: underline;
+            background-color: #2d2440;
         }
 
-        .contact {
-            font-size: 0.9rem;
-            color: var(--text);
-            margin-top: 2rem;
+        .links {
+            border: 1px solid #6b4ba3;
+            padding: 10px;
+            margin-bottom: 20px;
+            background: #1a1a24;
         }
 
-        main {
-            flex: 1;
-            padding: 2rem;
-            overflow-y: auto;
-            background: var(--panel);
+        .links a {
+            display: inline-block;
+            color: #b388ff;
+            text-decoration: none;
+            margin: 5px 15px;
+            border-bottom: 1px dotted #b388ff;
+        }
+
+        .links a:visited {
+            color: #9575cd;
+        }
+
+        .links a:hover {
+            border-bottom: 1px solid #b388ff;
+            color: #d1c4e9;
         }
 
         section {
-            display: none;
-        }
-
-        section.active {
-            display: block;
-        }
-
-        h2 {
-            font-size: 1.7rem;
-            color: var(--highlight);
-            margin-bottom: 1rem;
+            margin-bottom: 30px;
         }
 
         .card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 1rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 12px #0005;
-            cursor: pointer;
-        }
-
-        .card img {
-            width: 100%;
-            max-width: 420px;
-            height: auto;
-            border-radius: 8px;
-            margin-top: 0.8rem;
-            display: block;
+            border: 1px solid #6b4ba3;
+            padding: 15px;
+            margin: 10px 0;
+            background: #1a1a24;
         }
 
         .card h3 {
-            margin: 0;
-            font-size: 1.3rem;
-            color: var(--link);
+            margin-top: 0;
+            border-bottom: 1px solid #6b4ba3;
+            padding-bottom: 5px;
+            color: #d1c4e9;
         }
 
-        .card p {
-            margin: 0.5rem 0;
-            font-size: 1.05rem;
+        .card img {
+            max-width: 100%;
+            border: 1px solid #6b4ba3;
+            margin-top: 10px;
         }
 
         .card a {
-            display: inline-block;
-            margin-top: 0.4rem;
-            color: var(--highlight);
+            color: #b388ff;
             text-decoration: none;
+            border-bottom: 1px dotted #b388ff;
         }
 
         .card a:hover {
-            text-decoration: underline;
+            border-bottom: 1px solid #b388ff;
+            color: #d1c4e9;
         }
 
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: rgba(0, 0, 0, 0.7);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 999;
+        footer {
+            text-align: center;
+            border-top: 1px solid #6b4ba3;
+            padding-top: 10px;
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #9575cd;
         }
 
-        .modal-content {
-            background: var(--panel);
-            padding: 2rem;
-            max-width: 600px;
-            max-height: 80vh;
-            overflow-y: auto;
-            border-radius: 12px;
-            border: 2px solid var(--highlight);
-            color: var(--text);
-        }
-
-        .modal-content h3 {
-            margin-top: 0;
-            color: var(--highlight);
-        }
-
-        .modal-close {
-            margin-top: 1.5rem;
-            display: inline-block;
-            color: var(--link);
-            cursor: pointer;
+        h2 {
+            border-bottom: 2px solid #6b4ba3;
+            padding-bottom: 5px;
+            color: #d1c4e9;
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1>BwendyDev</h1>
+    </header>
     <nav>
-        <div class="nav-top">
-            <h1>BwendyDev</h1>
-            <ul>
-                <li><a onclick="showPanel('games')">Games</a></li>
-                <li><a onclick="showPanel('tools')">Tools & Software</a></li>
-                <li><a onclick="showPanel('poetry')">Poetry</a></li>
-            </ul>
-        </div>
-        <div class="contact">
-            &copy; 2024 BwendyDev<br>
-            <a href="mailto:bwendydev@proton.me" style="color:#b4befe;text-decoration:none;">Contact</a>
-        </div>
+        <a href="#links">[Links]</a>
+        <a href="#games">[Games]</a>
+        <a href="#tools">[Tools]</a>
     </nav>
     <main>
-        <section id="games" class="active">
+        <section id="links" class="links">
+            <h2>Who am I?</h2>
+            <p>My dad bought me Game Maker Studio 2 when I was around 12 years old. It's safe to say that was a mistake, and, unfortunately; I still am making video games. I go by Bwendy online, a nickname from around the same time, which is sort of a crude mispronunciation of about half of my name. I am, at any given point, working on a couple of concepts for books or short stories. If ever I do release any literature, I plan to release by the pen name "Fern Wright".</p>
+            <p>I'm a big fan of fantasy and it's many offshoots, I also play D&D, and take inspirations from many pieces of media like Adventure Time, the works of Brandon Sanderson, Tolkien, and more.</p>
+            <a href="https://en.pronouns.page/@bwendyboo" target="_blank">Pronouns.page</a>
+            <a href="https://github.com/bwendygames" target="_blank">GitHub</a>
+            <a href="https://twitter.com/bwendydev" target="_blank">Twitter</a>
+        </section>
+
+        <section id="games">
             <h2>Games</h2>
             <div class="card">
                 <h3>Gladiator's of Roma Revixit</h3>
-                <p>A post-nuclear roguelike with deep combat and narrative design. Project director and lead dev.</p>
-                <a href="https://wishlist.faraway.games" target="_blank">Wishlist on Steam</a>
+                <p>A post-nuclear roguelike with deep combat and narrative design. Project director, lead writer and dev.</p>
+                <a href="https://wishlist.faraway.games" target="_blank">&gt; Wishlist on Steam</a>
                 <img src="glad_scr_1.png" alt="Gladiators Screenshot 1">
             </div>
             <div class="card">
                 <h3>The Boy in the Hour Glass</h3>
                 <p>Made in 48 hours for a game jam. I led development.</p>
-                <a href="https://farawaystudios.itch.io/the-boy-in-the-hour-glasss" target="_blank">Play on Itch.io</a>
+                <a href="https://farawaystudios.itch.io/the-boy-in-the-hour-glasss" target="_blank">&gt; Play on Itch.io</a>
                 <img src="boy_scr_1.png" alt="The Boy Screenshot 1">
             </div>
             <div class="card">
                 <h3>RTS Football</h3>
                 <p>Mechs playing football. Released solo on Steam.</p>
-                <a href="https://store.steampowered.com/app/2493470/RTS_Football/" target="_blank">Steam Page</a>
+                <a href="https://store.steampowered.com/app/2493470/RTS_Football/" target="_blank">&gt; Steam Page</a><br>
                 <img src="rts_scr_1.jpg" alt="RTS Football Screenshot 1">
             </div>
         </section>
@@ -219,157 +164,13 @@
             <div class="card">
                 <h3>PyCube</h3>
                 <p>Python-inspired Twine format supporting logic, save/load, and more.</p>
-                <a href="https://pycube.org" target="_blank">pycube.org</a>
+                <a href="https://pycube.org" target="_blank">&gt; Visit Website</a><br>
                 <img src="logo.png" alt="PyCube Logo">
             </div>
         </section>
-
-        <section id="poetry">
-            <h2>Poetry</h2>
-            <div class="card" onclick="loadPoem('Parked Impala')">
-                <h3>Parked Impala</h3>
-            </div>
-            <div class="card" onclick="loadPoem('Saving Theodore')">
-                <h3>Saving Theodore</h3>
-            </div>
-        </section>
     </main>
-
-    <div id="poemModal" class="modal" onclick="closeModal(event)">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <h3 id="modalTitle"></h3>
-            <pre id="modalBody" style="white-space: pre-wrap;"></pre>
-            <span class="modal-close" onclick="closeModal(event)">Close</span>
-        </div>
-    </div>
-
-    <script>
-        // Poem texts as variables
-        const poems = {
-            "Parked Impala": `
-
-Mommy drives to school
-Down suburb society 
-Very little variety
-Too tired to keep her eyes on the road 
-She lets her eyes close and 
-She falls asleep on the phone
-With her boy in the back 
-Seatbelts on, I'll give her that
-Begins to wave, it's 8 am
-Skip school kid, it's on me
-Straight into my 
-Parked Impala
-
-Tow trucks tow two cars
-one worse for wear,
-One barely noticed, 
-She barely cares
-Insurance sharing,
-Split parent tearing,
-Statefarm shill 
-Tell the post office 
-The mailbox’s split
-In two
-Act like 
-They never knew you 
-Doesn’t take long 
-For them to blame you 
-I suppose, I’m doing the same 
-To you too
-
-Boy in the ambulance 
-just getting checked out 
-airbags out 
-Impala’s totaled 
-I walk to work now
-`,
-
-            "Saving Theodore": `
-
-Short men in a tall world
-bring the world
-down to their level
-And they blame it on the bevel
-And so they slipped
-On their way
-To better days
-
-Write your name down
-Theodore Brooks
-Father of four
-You made your daughter
-A wooden horse
-You built a house
-For your wife
-Who complained
-On lonely nights
-You got a dog
-Who fit just right
-You got a job
-It was alright
-But it barely lasted
-And before you knew
-You had a family who loved you
-And your fear of losing that
-Was the elephant
-in the room
-
-You started with a vase
-It held your mother's ashes
-It was worth something dashing
-So you sold it to a traveling man
-Who belonged to some traveling band
-You suppose he turned a profit
-Because he was back before you knew
-Asking for another heirloom
-But only one other held your mother
-And so you became aware that
-Your wedding ring was strangling your fingers
-Fat fingered tinkerer man
-
-The man had made a habit
-Of buying your old gadgets
-And as it whittled thin
-You started dipping into
-The things you did
-for your kids
-You sold the wooden horse
-You sold the lonely nights
-And the house you called home
-It was no longer yours to own
-
-Where’d it all go, old man?
-You spent it trying to make more,
-How original, family man
-And so you sit out on a porch
-Peach tea and two cobbler portions
-You broke even with your deals
-When you traded your soul
-You know why what happened did
-Your wife left you, took the kids too
-She’s married to a taller man
-Than you
-`
-        };
-
-        function showPanel(id) {
-            document.querySelectorAll('main section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById(id).classList.add('active');
-        }
-
-        function loadPoem(title) {
-            const text = poems[title];
-            document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalBody').textContent = text ? text.trim() : 'Poem not found.';
-            document.getElementById('poemModal').style.display = 'flex';
-        }
-
-        function closeModal(event) {
-            document.getElementById('poemModal').style.display = 'none';
-        }
-    </script>
+    <footer>
+        &copy; 2025 BwendyDev. All rights reserved.
+    </footer>
 </body>
 </html>
